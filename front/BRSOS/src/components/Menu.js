@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-
 import {
-  Platform,
   StyleSheet,
+  Text,
   View
 } from 'react-native';
 
-import Login from './components/Login';
-
-export default class App extends Component {
+export default class Menu extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Login />
+        <Text>
+          BR-SOS
+        </Text>
       </View>
     );
   }
@@ -20,7 +19,8 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    padding: 30,
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   }
 });

@@ -11,7 +11,7 @@ import {
 import t from 'tcomb-form-native';
 const Form = t.form.Form;
 
-const Login = t.struct({
+const loginStruct = t.struct({
   email: t.String,
   password: t.String
 });
@@ -35,13 +35,13 @@ const options = {
 }
 
 import Authentication from '../middlewares/Authentication'
-export default class App extends Component {
+export default class Login extends Component {
   componentDidMount() {
     this.refs.login.getComponent('email').refs.input.focus();
   }
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       spinnerAnimating: false,
       infos: {
@@ -64,7 +64,12 @@ export default class App extends Component {
         const response = await Authentication.login(infos)
 
         AsyncStorage.setItem('token', response.data.token)
-        AsyncStorage.setItem('user', response.data.me)
+        //AsyncStorage.setItem('user', response.data.me)
+
+        this.props.navigator.resetTo({
+          screen: 'Menu',
+          title: 'Menu',
+        })
       }   
 
       setTimeout(() => this.setState({ spinnerAnimating: false }), 1000)   
@@ -87,7 +92,7 @@ export default class App extends Component {
 
         <Form 
           ref="login" 
-          type={Login} value={this.state.infos} onChange={this.onChange.bind(this)}
+          type={loginStruct} value={this.state.infos} onChange={this.onChange.bind(this)}
           style={{ marginTop: 50 }} options={options} />
 
         <ActivityIndicator size="large" color="#589836" animating={this.state.spinnerAnimating} />
@@ -104,6 +109,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 30,
     marginTop: 25,
+    flex: 1,
+    backgroundColor: '#F5FCFF'
   },
   title: {
     fontSize: 40,
