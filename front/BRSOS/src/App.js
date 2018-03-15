@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-
 import {
-  Platform,
   StyleSheet,
   View
 } from 'react-native';
 
-import Login from './components/Login';
+import Cadastro from './components/Cadastro';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Login />
+        <Cadastro />
       </View>
     );
   }
@@ -21,6 +19,8 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#F5FCFF',
   }
 });

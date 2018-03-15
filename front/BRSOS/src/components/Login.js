@@ -35,7 +35,7 @@ const options = {
 }
 
 import Authentication from '../middlewares/Authentication'
-export default class App extends Component {
+export default class Login extends Component {
   componentDidMount() {
     this.refs.login.getComponent('email').refs.input.focus();
   }
@@ -99,6 +99,8 @@ export default class App extends Component {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
