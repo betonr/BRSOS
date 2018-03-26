@@ -1,10 +1,11 @@
 import { Navigation } from 'react-native-navigation';
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage } from 'react-native';
 
 import Login from './screens/Login';
-import Menu from './components/Menu';
+import Menu from './screens/Menu';
 
 export default () => {
+
   Navigation.registerComponent('Login', () => Login);
   Navigation.registerComponent('Menu', () => Menu);
 
@@ -13,7 +14,14 @@ export default () => {
       if(token) {
         return {
           screen: 'Menu',
-          title: 'Menu'
+          title: 'Menu',
+          rightButtons: [ 
+            {
+              title: 'Logout',
+              id: 'logout',
+              buttonColor: 'gray'
+            }
+          ]
         }
       }
 
@@ -22,5 +30,5 @@ export default () => {
         title: 'Login',
       }
     })
-  .then( screen => Navigation.startSingleScreenApp({screen}) );
+    .then( screen => Navigation.startSingleScreenApp({screen}) );
 }

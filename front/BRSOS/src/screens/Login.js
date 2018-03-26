@@ -57,10 +57,10 @@ export default class Login extends Component {
 
   async login() {
     try {
-      this.setState({ spinnerAnimating: true })
       let infos = this.refs.login.getValue();
       
       if(infos != null && infos.email != '' && infos.password != ''){
+        this.setState({ spinnerAnimating: true })
         const response = await Authentication.login(infos)
 
         AsyncStorage.setItem('token', response.data.token)
@@ -69,13 +69,20 @@ export default class Login extends Component {
         this.props.navigator.resetTo({
           screen: 'Menu',
           title: 'Menu',
+          rightButtons: [
+            {
+              title: 'Logout',
+              id: 'logout',
+              buttonColor: 'gray'
+            }
+          ]
         })
       }   
 
-      setTimeout(() => this.setState({ spinnerAnimating: false }), 1000)   
+      this.setState({ spinnerAnimating: false })  
 
     }catch (error){
-      setTimeout(() => this.setState({ spinnerAnimating: false }), 1000)
+      this.setState({ spinnerAnimating: false })
       alert(error.response.data.errors[0].messages)
     }
   }  
