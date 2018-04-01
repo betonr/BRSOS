@@ -10,12 +10,12 @@ module.exports = app => {
 
     //metodo para realização de login - autenticação
     AuthModel.prototype.login = async function(info){
-        return new Promise((resolve, reject) => {
+        return new Promise( (resolve, reject) => {
             collection.findOne({ email: info.email, status: true })
                 .then( user => {
                     if(user != null) {
                         this._isPassword(user, info.password)
-                            .catch(error => reject(error))
+                            .catch(error => reject({'error': error, status: 500}))
                             .then( () => {
                                 user.password = null
                                 resolve({
@@ -35,8 +35,11 @@ module.exports = app => {
                                 }
                             ]                   
                         }
-                        reject(response)
+                        reject({'error': response, status: 401})
                     }
+                    
+                }).catch( err => {
+                    reject({'error': err, status: 500})
                 })
         });
     }

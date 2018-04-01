@@ -19,7 +19,7 @@
  *         "status": 1
  *     },
  *     "token": "eyJhbGciOiJIUzI1NiIsInR5...",
- *      "messsage": "Authorization success"
+ *     "messsage": "Authorization success"
  * 
  * @apiErrorExample {json} Failed
  *    HTTP/1.1 401 Unauthorized Failed
@@ -28,7 +28,7 @@
  *                  "password"
  *            ],
  *            "messages": [
- *                  "password incorrect!"
+ *                  "wrong password!"
  *            ]
  *    }]
  * 

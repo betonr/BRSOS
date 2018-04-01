@@ -5,7 +5,6 @@ const app = express();
 
 consign()
     .include('libs/DSINFO.js')
-    .then('persistence/createConnection')
     .then('persistence')
     .then('models')
     .then('controllers')

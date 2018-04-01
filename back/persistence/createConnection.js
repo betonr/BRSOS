@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import url from 'url';
 
+import logger from '../libs/logger'
+
 module.exports = app => {
 
     mongoose.Promise = global.Promise;
@@ -16,12 +18,11 @@ module.exports = app => {
                 `mongodb://localhost:27017/${app.libs.DSINFO.db.database}`
         }
 
-        mongoose.connect(cn);
-        mongoose.connection.on('error', function() {
-            console.log('Could not connect to the database. Exiting now...');
-            process.exit();
-        });
-            
+        mongoose.connect(cn).then(
+            () => { logger.info('connection established') },
+            ( err ) => { logger.error('Could not connect to the database: ' + err) }
+        );
+
     }
 
 }
