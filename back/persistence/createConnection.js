@@ -19,7 +19,7 @@ module.exports = app => {
         }
 
         mongoose.connect(cn).then(
-            () => { logger.info('connection established') },
+            () => {},
             ( err ) => { logger.error('Could not connect to the database: ' + err) }
         );
 

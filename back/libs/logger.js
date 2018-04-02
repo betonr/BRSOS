@@ -6,13 +6,18 @@ if(!fs.existsSync('logs')){
 }
 
 const logger = new winston.createLogger({
-    format: winston.format.json(),
+    format: winston.format.combine(
+        winston.format.timestamp({
+            format: 'YYYY-MM-DD HH:mm:ss'
+        }),
+        winston.format.json()
+    ),    
     transports: [
         new winston.transports.File({ 
-            filename: 'logs/access.log', level: 'info', maxsize: 100000, maxFiles: 4
+            filename: 'logs/access.log', level: 'info', maxsize: 10000000, maxFiles: 4
         }),
         new winston.transports.File({ 
-            filename: 'logs/error.log', level: 'error', maxsize: 100000, maxFiles: 6
+            filename: 'logs/error.log', level: 'error', maxsize: 10000000, maxFiles: 6
         })
     ]
 })

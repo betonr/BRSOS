@@ -5,6 +5,7 @@ const app = express();
 
 consign()
     .include('libs/DSINFO.js')
+    .then('persistence/createConnection.js')
     .then('persistence')
     .then('models')
     .then('controllers')
@@ -12,5 +13,6 @@ consign()
     .then('middlewares')
     .then('policies')
     .then('routes')
-    .then('libs/boot.js')    
+    .then('libs/boot.js')
+    .then('libs/clusters.js') 
     .into(app);

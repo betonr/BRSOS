@@ -1,16 +1,24 @@
-import http from "http";
+import http from "http"
+
+import logger from '../libs/logger'
 
 module.exports = app => {
 
-  http.createServer(app)
+  const boot = function() {}
+
+  boot.prototype.start = function(){
+    http.createServer(app)
       .listen(app.libs.DSINFO.port, () => {
-          console.log(`API BRSOS running successfully - port ${app.libs.DSINFO.port}`);
+          logger.info(`API BRSOS running successfully - port ${app.libs.DSINFO.port}`);
       });
 
-  app.use(function(err, req, res, next){
-    res.status(400).json(err);
-  });
-}
+    app.use(function(err, req, res, next){
+      res.status(400).json(err);
+    });
+  }  
+
+  return boot;
+}  
 
 /*
 import https from "https";

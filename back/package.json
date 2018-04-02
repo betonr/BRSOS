@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js --exec babel-node --presets es2015,stage-2",
-    "debug": "NODE_ENV=production babel-node-debug index.js --presets es2015",
+    "start": "npm run docs && npm run clusters",
+    "clusters": "NODE_ENV=production babel-node index.js",
     "docs": "apidoc -i routes/doc -o public/apidoc"
   },
   "apidoc": {
