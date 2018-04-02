@@ -1,6 +1,6 @@
 module.exports = app => {
 
-    app.get("/", (req, res) => {
+    app.get("/brsos/api/", (req, res) => {
         res.status(200).json({ status: "API BRSOS - FUNCIONANDO CORRETAMENTE" });
     });
 

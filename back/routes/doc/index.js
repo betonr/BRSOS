@@ -1,5 +1,5 @@
 /**
- * @api {get} / API Status
+ * @api {get} /brsos/api/ API Status
  * @apiGroup Status
  * @apiSuccess {String} status message of API BRSOS
  * @apiSuccessExample {json} Sucess
