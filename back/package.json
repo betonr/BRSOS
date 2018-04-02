@@ -34,10 +34,10 @@
     "passport-jwt": "^3.0.0",
     "url": "^0.11.0",
     "winston": "^3.0.0-rc3",
-    "apidoc": "^0.15.1"
-  },
-  "devDependencies": {
+    "apidoc": "^0.15.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1"
+  },
+  "devDependencies": {
   }
 }
