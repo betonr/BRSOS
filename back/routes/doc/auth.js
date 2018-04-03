@@ -9,9 +9,9 @@
  *    "me": {
  *         "_id": 3asdsaqqe12edwqds,
  *         "name": "beto",
+ *         "thumb": binary-code
  *         "lastname": "noronha",
- *         "email": "beto@gmail.com",
- *         "institution": "INPE",   
+ *         "email": "beto@gmail.com", 
  *         "level": 2,
  *         "cpf": 000000000-00
  *         "registration": "2017-05-31T03:00:00.000Z",

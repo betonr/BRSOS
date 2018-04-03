@@ -15,7 +15,7 @@ module.exports = app => {
                 .then( user => {
                     if(user != null) {
                         this._isPassword(user, info.password)
-                            .catch(error => reject({'error': error, status: 500}))
+                            .catch(error => reject({'error': error, status: 401}))
                             .then( () => {
                                 user.password = null
                                 resolve({

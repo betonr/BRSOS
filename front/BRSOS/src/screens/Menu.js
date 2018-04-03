@@ -40,10 +40,10 @@ export default class Menu extends Component {
         </TouchableHighlight>
 
         <TouchableHighlight
-         style={[ {marginTop: 20}, styles.button ]}
+         style={[ {marginTop: 40}, styles.button ]}
          onPress={this.onPress}
         >
-          <Text style={styles.textButton}> VIZUALIZE OCORRÊNCIAS </Text>
+          <Text style={styles.textButton}> VISUALIZE OCORRÊNCIAS </Text>
         </TouchableHighlight>
 
       </View>
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: 'gray',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    borderRadius: 10,
     padding: 40,
     paddingBottom: 60,
     paddingTop: 60
@@ -69,7 +70,6 @@ const styles = StyleSheet.create({
   textButton: {
     color: '#FFFFFF',
     fontSize: 17,
-    fontWeight: 'bold',
-    marginTop: 20
+    fontWeight: 'bold'
   }
 });

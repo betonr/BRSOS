@@ -64,7 +64,7 @@ export default class Login extends Component {
         const response = await Authentication.login(infos)
 
         AsyncStorage.setItem('token', response.data.token)
-        //AsyncStorage.setItem('user', response.data.me)
+        AsyncStorage.setItem('user', response.data.me)
 
         this.props.navigator.resetTo({
           screen: 'Menu',
@@ -83,7 +83,13 @@ export default class Login extends Component {
 
     }catch (error){
       this.setState({ spinnerAnimating: false })
-      alert(error.response.data.errors[0].messages)
+      
+      if(typeof error.response.data.errors[0] !== 'undefined'){
+        alert(error.response.data.errors[0].messages)
+      }else {
+        alert('Erro interno, entre em contato com os administradores!')
+      }
+      
     }
   }  
 
