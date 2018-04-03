@@ -6,11 +6,13 @@ COPY ./back/package*.json ./
 
 RUN npm install --only=production
 
-ENV PORT=27017
-ENV DATABASE_HOST='mongo'
-ENV DATABASE_USER='teste'
-ENV DATABASE_PASS='testepass'
-ENV DATABASE_NAME='teste'
+ENV PORT=3000
+
+ENV DB_PORT=27017
+ENV HOST='mongo'
+ENV DB_USER='teste'
+ENV DB_PASS='testepass'
+ENV DB_NAME='teste'
 
 COPY ./back .
 
