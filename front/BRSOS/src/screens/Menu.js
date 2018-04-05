@@ -7,18 +7,30 @@ import {
   AsyncStorage
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
+
 export default class Menu extends Component {
 
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this.props.navigator.setStyle({
+      navBarBackgroundColor: '#7188AD',
+    });
+    this.props.navigator.setButtons({
+      rightButtons: [
+        { id: 'logout', 
+          title: 'Logout' 
+        }
+      ]
+    });
   }
 
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
       if (event.id == 'logout') {
         AsyncStorage.removeItem('token')
-        //AsyncStorage.removeItem('user')
+        AsyncStorage.removeItem('user')
 
         this.props.navigator.resetTo({
           screen: 'Login',
@@ -32,19 +44,15 @@ export default class Menu extends Component {
     return (
       <View style={styles.container}>
 
-        <TouchableHighlight
-         style={styles.button}
-         onPress={this.onPress}
-        >
+        <Icon.Button style={styles.button} name="add" size={40} backgroundColor="#0B1D3B" onPress={this.onPress}>
           <Text style={styles.textButton}> CADASTRE OCORRÊNCIAS </Text>
-        </TouchableHighlight>
+        </Icon.Button>
 
-        <TouchableHighlight
-         style={[ {marginTop: 40}, styles.button ]}
-         onPress={this.onPress}
-        >
+        <Text style={styles.divisoria}></Text>
+
+        <Icon.Button style={styles.button} name="search" size={40} backgroundColor="#000000" onPress={this.onPress}>
           <Text style={styles.textButton}> VISUALIZE OCORRÊNCIAS </Text>
-        </TouchableHighlight>
+        </Icon.Button>
 
       </View>
     );
@@ -54,14 +62,16 @@ export default class Menu extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#304A73',
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  divisoria: {
+    paddingBottom: 30
+  },
   button: {
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
     borderRadius: 10,
     padding: 40,
     paddingBottom: 60,

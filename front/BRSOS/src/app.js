@@ -14,20 +14,13 @@ export default () => {
       if(token) {
         return {
           screen: 'Menu',
-          title: 'Menu',
-          rightButtons: [ 
-            {
-              title: 'Logout',
-              id: 'logout',
-              buttonColor: 'gray'
-            }
-          ]
+          title: 'Menu'
         }
       }
 
       return {
         screen: 'Login',
-        title: 'Login',
+        title: 'Login'
       }
     })
     .then( screen => Navigation.startSingleScreenApp({screen}) );

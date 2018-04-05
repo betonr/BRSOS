@@ -49,6 +49,9 @@ export default class Login extends Component {
         password: ''
       }
     }
+    this.props.navigator.setStyle({
+      navBarBackgroundColor: '#7188AD',
+    });
   }
   
   onChange(infos) {
@@ -68,14 +71,7 @@ export default class Login extends Component {
 
         this.props.navigator.resetTo({
           screen: 'Menu',
-          title: 'Menu',
-          rightButtons: [
-            {
-              title: 'Logout',
-              id: 'logout',
-              buttonColor: 'gray'
-            }
-          ]
+          title: 'Menu' 
         })
       }   
 
@@ -121,9 +117,8 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    marginTop: 25,
     flex: 1,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#304A73'
   },
   title: {
     fontSize: 40,
@@ -133,6 +128,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 20,
+    color: 'white',
     textAlign: 'center',
     marginBottom: 60
   },
