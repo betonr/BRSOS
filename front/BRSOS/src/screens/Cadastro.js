@@ -3,13 +3,10 @@ import {
   StyleSheet,
   Text,
   View,
-  AsyncStorage,
-  TouchableHighlight
+  AsyncStorage
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
-export default class Menu extends Component {
+export default class Cadastro extends Component {
 
   constructor(props) {
     super(props);
@@ -43,26 +40,10 @@ export default class Menu extends Component {
     }
   }
 
-  getCadastro() {
-    this.props.navigator.push({
-      screen: 'Cadastro',
-      title: 'Cadastre ocorrências'
-    })
-  }
-
   render() {
-
     return (
-      <View style={ styles.container }>
-        
-        <TouchableHighlight >
-          <Icon.Button style={styles.button} name="add" size={40} backgroundColor="#0B1D3B" onPress={ () => this.getCadastro() }>
-            <Text style={styles.textButton}> CADASTRE OCORRÊNCIAS </Text>
-          </Icon.Button>
-        </TouchableHighlight>
-
-        <Text style={styles.divisoria}></Text>
-
+      <View style={styles.container}>
+        <Text style={ {color: '#FFFFFF'} }> cadastro </Text>
       </View>
     );
   }
@@ -74,19 +55,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#304A73',
     alignItems: 'center',
     flex: 6
-  },
-  divisoria: {
-    paddingBottom: 30
-  },
-  button: {
-    borderRadius: 10,
-    padding: 20,
-    paddingBottom: 25,
-    paddingTop: 25
-  },
-  textButton: {
-    color: '#FFFFFF',
-    fontSize: 17,
-    fontWeight: 'bold'
   }
 });

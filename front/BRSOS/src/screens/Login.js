@@ -9,7 +9,13 @@ import {
 } from 'react-native';
 
 import t from 'tcomb-form-native';
+import _ from 'lodash';
+
 const Form = t.form.Form;
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+stylesheet.textbox.normal.color = '#FFFFFF';
+stylesheet.controlLabel.normal.color = '#FFFFFF';
 
 const loginStruct = t.struct({
   email: t.String,
@@ -22,14 +28,16 @@ const options = {
       label: 'E-mail',
       placeholder: 'Seu e-mail',
       error: 'Esse campo não pode ser nulo',
-      autoCapitalize: 'none'
+      autoCapitalize: 'none',
+      stylesheet: stylesheet
     },
     password: {
       label: 'Senha',
       password: true,
       error: 'Digite sua senha',
       secureTextEntry: true,
-      autoCapitalize: 'none'
+      autoCapitalize: 'none',
+      stylesheet: stylesheet
     }
   }
 }
@@ -50,7 +58,7 @@ export default class Login extends Component {
       }
     }
     this.props.navigator.setStyle({
-      navBarBackgroundColor: '#7188AD',
+      navBarBackgroundColor: '#7188AD'
     });
   }
   
@@ -71,7 +79,7 @@ export default class Login extends Component {
 
         this.props.navigator.resetTo({
           screen: 'Menu',
-          title: 'Menu' 
+          title: 'Home' 
         })
       }   
 
@@ -102,7 +110,7 @@ export default class Login extends Component {
         <Form 
           ref="login" 
           type={loginStruct} value={this.state.infos} onChange={this.onChange.bind(this)}
-          style={{ marginTop: 50 }} options={options} />
+          style={{ marginTop: 50, color: 'red' }} options={options} />
 
         <ActivityIndicator size="large" color="#589836" animating={this.state.spinnerAnimating} />
         
