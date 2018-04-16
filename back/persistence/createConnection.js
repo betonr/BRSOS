@@ -18,9 +18,9 @@ module.exports = app => {
                 `mongodb://localhost:27017/${app.libs.DSINFO.db.database}`
         }
 
-        mongoose.connect(cn).then(
-            () => {},
-            ( err ) => { logger.error('Could not connect to the database: ' + err) }
+        mongoose.connect(cn)
+            .then( () => {} )
+            .catch( err  => { logger.error('Could not connect to the database: ' + err) }
         );
 
     }

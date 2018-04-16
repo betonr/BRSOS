@@ -7,7 +7,7 @@ module.exports = (app) => {
 
     UserController.prototype.users = function(req, res){
         let id = req.params.id ? req.params.id : false;
- 
+
         if(id) {
             userModel.findOne({_id: id})
                 .then( (user) => res.send({user}) )
