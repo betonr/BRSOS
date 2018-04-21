@@ -16,7 +16,7 @@
  *         "cpf": 000000000-00
  *         "registration": "2017-05-31T03:00:00.000Z",
  *         "lastupdate": "2018-03-07T03:00:00.000Z",
- *         "status": 1
+ *         "status": true
  *     },
  *     "token": "eyJhbGciOiJIUzI1NiIsInR5...",
  *     "messsage": "Authorization success"

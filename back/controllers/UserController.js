@@ -45,8 +45,8 @@ module.exports = (app) => {
             })
             .catch( () => {
                 userModel.register(user)
-                    .then( response => res.status(201).send(response))
-                    .catch( error => res.status(500).send(error))
+                    .then( response => res.status(201).send({ 'id': response.id }) )
+                    .catch( error => res.status(500).send(error) )
             });
     }
 
@@ -73,7 +73,7 @@ module.exports = (app) => {
         userModel.findOne({_id: id})
             .then( () => {
                 userModel.delete(id)
-                    .then( () => res.status(202).send() )
+                    .then( () => res.status(202).send({success: true}) )
                     .catch( error => res.status(500).send(error))
             })
             .catch( () => res.status(404).send({

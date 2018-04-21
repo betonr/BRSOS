@@ -11,7 +11,7 @@ module.exports = app => {
     OcorrenciaModel.prototype.findOne = async function(identifier){
         return new Promise((resolve, reject) => {          
             collection.findOne(identifier)
-                .then( ocorrencia => resolve(ocorrencia) )
+                .then( ocorrencia => ocorrencia != null ? resolve(ocorrencia) : reject(ocorrencia) )
                 .catch( error => reject(error) );
         })
     } 

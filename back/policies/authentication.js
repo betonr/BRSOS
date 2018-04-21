@@ -22,11 +22,11 @@ function auth(req, res, next) {
  * ou está editando suas proprias informações
  */ 
 function isAdmin(req, res, next) {
-    if(req.user.id != req.body.id && req.user.level != 3){
+    if(req.user.id != req.body.id || req.user.level != 3){
         res.status(403).send({
             errors: [{ 
                 field: ['_id'],
-                message: ['You need to be an administrator']
+                message: ['You need to be an administrator or You can not change information from other users']
             }]
         })
     }else{
