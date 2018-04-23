@@ -15,6 +15,10 @@ Imagens das telas em tamanhos maiores podem ser encontradas em `/public`
 
 ![tela_menu](https://github.com/betonr/BRSOS/blob/master/tela_menu.jpeg)
 
+* Tela de Cadastro:
+
+![tela_cadastro](https://github.com/betonr/BRSOS/blob/master/tela_cadastro.jpeg)
+
 * Tela Acidente:
 
 ![tela_listagem](https://github.com/betonr/BRSOS/blob/master/tela_listagem.png)
