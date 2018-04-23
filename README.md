@@ -14,6 +14,10 @@ Imagens das telas em tamanhos maiores podem ser encontradas em `/public`
 * Tela de Menu / Home:
 
 ![tela_menu](https://github.com/betonr/BRSOS/blob/master/tela_menu.jpeg)
+
+* Tela Acidente:
+
+![tela_listagem](https://github.com/betonr/BRSOS/blob/master/tela_listagem.png)
   
 ## Trabalho da disciplina de programação para dispositivos móvies
 
