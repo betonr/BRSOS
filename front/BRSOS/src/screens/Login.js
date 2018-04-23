@@ -14,9 +14,6 @@ import _ from 'lodash';
 const Form = t.form.Form;
 const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
 
-stylesheet.textbox.normal.color = '#FFFFFF';
-stylesheet.controlLabel.normal.color = '#FFFFFF';
-
 const loginStruct = t.struct({
   email: t.String,
   password: t.String
@@ -125,8 +122,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    flex: 1,
-    backgroundColor: '#304A73'
+    flex: 1
   },
   title: {
     fontSize: 40,
@@ -136,7 +132,6 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 20,
-    color: 'white',
     textAlign: 'center',
     marginBottom: 60
   },

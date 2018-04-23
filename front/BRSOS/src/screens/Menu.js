@@ -16,8 +16,7 @@ export default class Menu extends Component {
     
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this.props.navigator.setStyle({
-      navBarBackgroundColor: '#7188AD',
-      navBarTextColor: '#FFFFFF'
+      navBarBackgroundColor: '#7188AD'
     });
     this.props.navigator.setButtons({
       rightButtons: [
@@ -71,7 +70,6 @@ export default class Menu extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    backgroundColor: '#304A73',
     alignItems: 'center',
     flex: 6
   },
