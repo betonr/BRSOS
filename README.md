@@ -2,7 +2,18 @@
   * [Carlos Alberto Noronha](https://github.com/betonr)
   * [Christian de Oliveira](https://github.com/christiancob)
   * [Danilo Freire](https://github.com/danilocf)
-  
+
+## Telas do APP-BRSOS 
+
+Imagens das telas em tamanhos maiores podem ser encontradas em `/public`
+
+* Tela de Login:
+
+![tela_login](https://github.com/TelegramBotSocial/boralaMVC/blob/master/public/print_result_tiny.jpg) 
+
+* Tela de Menu / Home:
+
+![tela_menu](https://github.com/TelegramBotSocial/boralaMVC/blob/master/public/print_maps_tiny.jpg)
   
 ## Trabalho da disciplina de programação para dispositivos móvies
 
