@@ -9,11 +9,11 @@ Imagens das telas em tamanhos maiores podem ser encontradas em `/public`
 
 * Tela de Login:
 
-![tela_login](https://github.com/TelegramBotSocial/boralaMVC/blob/master/public/print_result_tiny.jpg) 
+![tela_login](https://github.com/betonr/BRSOS/blob/master/tela_login.jpeg) 
 
 * Tela de Menu / Home:
 
-![tela_menu](https://github.com/TelegramBotSocial/boralaMVC/blob/master/public/print_maps_tiny.jpg)
+![tela_menu](https://github.com/betonr/BRSOS/blob/master/tela_menu.jpeg)
   
 ## Trabalho da disciplina de programação para dispositivos móvies
 
