@@ -1,4 +1,6 @@
 /node_modules
-/public
-/logs
 package-lock.json
+/public
+/__test__/resultado
+/logs
+/dist

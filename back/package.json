@@ -1,43 +1,61 @@
 {
-  "name": "brsos",
-  "version": "0.0.1",
+  "name": "brsos-api",
+  "version": "0.9.0",
   "description": "API BRSOS",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "dev": "nodemon index.js --exec babel-node --presets es2015,stage-2",
-    "start": "npm run docs && npm run clusters",
-    "clusters": "NODE_ENV=production babel-node index.js",
-    "docs": "apidoc -i routes/doc -o public/doc"
+    "start": "node dist/main.js",
+    "build": "tsc",
+    "docs": "apidoc -i ts/routes/doc -o public/doc",
+    "test": "NODE_ENV=test babel-node __test__/index.js --logHeapUsage"
   },
   "apidoc": {
-    "name": "Documentation of API BRSOS",
+    "name": "Documentação da API BRSOS",
     "template": {
-      "forceLanguage": "en"
+      "forceLanguage": "pt_br"
     }
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
+    "apidoc": "^0.15.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
-    "consign": "^0.1.6",
     "cors": "^2.8.4",
     "express": "^4.15.3",
     "express-validation": "^1.0.2",
-    "formidable": "^1.2.1",
     "helmet": "^3.9.0",
     "joi": "^13.0.1",
     "jsonwebtoken": "^8.0.0",
-    "mongodb": "^3.0.2",
     "mongoose": "^5.0.6",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
     "url": "^0.11.0",
-    "winston": "^3.0.0-rc3",
-    "apidoc": "^0.15.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1"
+    "winston": "^3.0.0-rc3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.11.1",
+    "@types/helmet": "0.0.37",
+    "@types/mongoose": "^5.0.15",
+    "@types/morgan": "^1.7.35",
+    "@types/passport-jwt": "^3.0.1",
+    "@types/winston": "^2.3.9",
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
+    "regenerator-runtime": "^0.11.1",
+    "supertest": "^3.0.0",
+    "ts-node": "^6.0.5",
+    "typescript": "^2.9.1"
+  },
+  "jest": {
+    "globals": {
+      "address": "http://localhost:3001"
+    },
+    "verbose": true,
+    "testEnvironment": "node",
+    "coverageReporters": [
+      "lcov"
+    ],
+    "coverageDirectory": "./__test__/resultado"
   }
 }
