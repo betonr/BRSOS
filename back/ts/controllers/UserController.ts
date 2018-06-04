@@ -28,7 +28,7 @@ export class UserController {
                         status: 404,
                         errors: [{ 
                             field: ['id'],
-                            messages: ['Usuário não encontrado']
+                            messages: ['User not found']
                         }]
                     })
                 )
@@ -45,7 +45,7 @@ export class UserController {
                     .catch( (error) => {
                         reject({
                             status: 500, 
-                            errors: "Erro de servidor interno" 
+                            errors: "Internal Server Error" 
                         })
                     })
             }
@@ -61,7 +61,7 @@ export class UserController {
                         status: 409,
                         errors: [{ 
                             field: ['email'],
-                            messages: [`E-mail (${user.email}) já está em uso`]
+                            messages: [`Email Address (${user.email}) already in use`]
                         }]
                     })
                 })
@@ -75,7 +75,7 @@ export class UserController {
                         .catch( error => {
                             reject({ 
                                 status: 500,
-                                errors: "Erro de servidor interno" 
+                                errors: "Internal Server Error" 
                             })
                         })
                 })
@@ -99,7 +99,7 @@ export class UserController {
                         .catch( error => {
                             reject({ 
                                 status: 500,
-                                errors: "Erro de servidor interno" 
+                                errors: "Internal Server Error" 
                             })
                         })
 
@@ -108,7 +108,7 @@ export class UserController {
                     status: 404,
                     errors: [{ 
                         field: ['id'],
-                        messages: ['Usuário não encontrado']
+                        messages: ['User not found']
                     }]
                 }) )
         })
@@ -123,7 +123,7 @@ export class UserController {
                         .catch( error => {
                             reject({ 
                                 status: 500,
-                                errors: "Erro de servidor interno" 
+                                errors: "Internal Server Error" 
                             })
                         })
 
@@ -132,7 +132,7 @@ export class UserController {
                     status: 404,
                     errors: [{ 
                         field: ['id'],
-                        messages: ['Usuário não encontrado']
+                        messages: ['User not found']
                     }]
                 }) )
         })

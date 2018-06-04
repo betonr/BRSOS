@@ -1,5 +1,5 @@
 /**
- * @api {get} /brsos/api/ocorrencia/ get json with ocorrencias
+ * @api {get} /brsos/api/ocorrencia/:id get by id
  * @apiGroup Ocorrencia
  * 
  * @apiHeader Authentication {String} Authorization Users unique access-key
@@ -27,8 +27,8 @@
  *          }
  *      }
  * 
- * @apiErrorExample {json} Ocorrencia not found
- *    HTTP/1.1 404 Ocorrencia not found
+ * @apiErrorExample {json} Occurrence not found
+ *    HTTP/1.1 404 Occurrence not found
  *       {
  *           "errors": [
  *               {
@@ -36,7 +36,7 @@
  *                       "id"
  *                   ],
  *                   "message": [
- *                       "Ocorrencia not found"
+ *                       "Occurrence not found"
  *                   ]
  *               }
  *           ]
@@ -53,7 +53,7 @@
  */
 
  /**
- * @api {get} /brsos/api/ocorrencia/ get json with ocorrencias
+ * @api {get} /brsos/api/ocorrencia/ get all
  * @apiGroup Ocorrencia
  * 
  * @apiHeader Authentication {String} Authorization Users unique access-key
@@ -94,7 +94,7 @@
  */ 
 
  /**
- * @api {get} /brsos/api/ocorrencia/ register/add ocorrencias to the database
+ * @api {post} /brsos/api/ocorrencia/register register/add
  * @apiGroup Ocorrencia
  * 
  * @apiHeader Authentication {String} Authorization Users unique access-key

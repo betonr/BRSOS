@@ -1,5 +1,5 @@
 /**
- * @api {post} /brsos/api/auth/login log in to the system
+ * @api {post} /brsos/api/auth/login log in
  * @apiGroup Authentication
  * 
  * @apiParam {String} email Email

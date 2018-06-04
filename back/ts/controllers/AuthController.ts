@@ -22,7 +22,7 @@ export class AuthController {
             if(bcrypt.compareSync(password, user.password)) resolve();
             else reject({errors: [{
                     field: ['password'],
-                    messages: ['Senha incorreta!']
+                    messages: ['wrong password!']
                 }]
             })
         })
@@ -46,25 +46,26 @@ export class AuthController {
                                         email: user.email,
                                         level: user.level
                                     }), 
-                                    messsage: 'Autorizado com sucesso'
+                                    messsage: 'Authorization success'
                                 })
                             })               
                     
                     //USER - NOT FOUND OR INACTIVE
                     } else{
-                        let response = {
-                            errors: [
-                                {
-                                    field: ['email','status'],
-                                    messages: ['Usuário não encontrado ou inativo']
-                                }
-                            ]                 
-                        }
-                        reject({'errors': response, status: 401})
+                        reject({
+                            status: 401,
+                            errors: [{ 
+                                field: ['email','status'],
+                                    messages: ['User not found or inactive']
+                            }]
+                        })
                     }
                     
                 }).catch( err => {
-                    reject({'errors': err, status: 500})
+                    reject({ 
+                        status: 500,
+                        errors: "Internal Server Error" 
+                    })
                 })  
         })
     }

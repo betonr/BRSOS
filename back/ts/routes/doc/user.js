@@ -1,5 +1,5 @@
 /**
- * @api {get} /brsos/api/user/:id get json with information from a user
+ * @api {get} /brsos/api/user/:id get by id
  * @apiGroup User
  *
  * @apiHeader Authentication {String} Authorization Users unique access-key
@@ -50,7 +50,7 @@
  */  
 
 /**
- * @api {get} /brsos/api/user/ get json with users information
+ * @api {get} /brsos/api/user/ get all
  * @apiGroup User
  *
  * @apiHeader Authentication {String} Authorization Users unique access-key
@@ -90,7 +90,7 @@
  */  
 
 /**
- * @api {post} /brsos/api/user/register register/add user to the database
+ * @api {post} /brsos/api/user/register register/add
  * @apiGroup User
  * 
  * @apiparam {String} name user full name
@@ -133,7 +133,7 @@
  */
 
  /**
- * @api {put} /brsos/api/user/update update user to the database
+ * @api {put} /brsos/api/user/update update by id
  * @apiGroup User
  *
  * @apiHeader Authentication {String} Authorization Users unique access-key 
@@ -194,7 +194,7 @@
  */
 
 /**
- * @api {delete} /brsos/api/user/delete/:id delete user to the database
+ * @api {delete} /brsos/api/user/delete/:id delete by id
  * @apiGroup User
  *
  * @apiHeader Authentication {String} Authorization Users unique access-key

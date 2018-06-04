@@ -10,9 +10,9 @@
     "test": "NODE_ENV=test babel-node __test__/index.js --logHeapUsage"
   },
   "apidoc": {
-    "name": "Documentação da API BRSOS",
+    "name": "Documentation of API BRSOS",
     "template": {
-      "forceLanguage": "pt_br"
+      "forceLanguage": "en"
     }
   },
   "dependencies": {

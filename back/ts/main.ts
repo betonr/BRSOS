@@ -7,7 +7,7 @@ const logger = new Logger().logs()
 
 server.start()
     .then( server => {
-        logger.info(`${environment.name} rodando com sucesso - porta ${environment.port}`)
+        logger.info(`${environment.name} running successfully - port ${environment.port}`)
 
     }).catch( error => {
         logger.error('Falha ao iniciar: '+error)

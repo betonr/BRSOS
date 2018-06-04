@@ -8,7 +8,10 @@ const authentication = function(req, res, next) {
     passport.authenticate('jwt', function (err, user) {
         if (err || !user) {
             res.status(403).send({
-                error: 'Você não tem permissão para acessar esse recurso'
+                errors: [{ 
+                    field: ['_id'],
+                    messages: ['You do not have access to this resource']
+                }]
             })
         } else {
             req.user = user
@@ -26,7 +29,7 @@ const isAdmin = function(req, res, next) {
         res.status(403).send({
             errors: [{ 
                 field: ['_id'],
-                message: ['Você precisa ser administrador']
+                messages: ['You need to be an administrator']
             }]
         })
     }else{
@@ -42,7 +45,7 @@ export default {
                 language: {
                   string: {
                     regex: {
-                      base: 'A senha precisa ter no mínimo 8 caracteres entre números e letras'
+                      base: 'Password should be atleast 8 characters long and should contain numbers and letters'
                     }
                   }
                 }

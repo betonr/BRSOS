@@ -11,7 +11,7 @@ export default {
                 language: {
                   string: {
                     regex: {
-                      base: 'A senha precisa ter no mínimo 8 caracteres entre números e letras'
+                      base: 'Password should be atleast 8 characters long and should contain numbers and letters'
                     }
                   }
                 }
@@ -30,7 +30,7 @@ export default {
                 language: {
                   string: {
                     regex: {
-                      base: 'A senha precisa ter no mínimo 8 caracteres entre números e letras'
+                      base: 'Password should be atleast 8 characters long and should contain numbers and letters'
                     }
                   }
                 }

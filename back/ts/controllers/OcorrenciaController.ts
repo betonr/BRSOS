@@ -19,7 +19,7 @@ export class OcorrenciaController {
                                 status: 404,
                                 errors: [{ 
                                     field: ['id'],
-                                    messages: ['Ocorrência não encontrada']
+                                    messages: ['Occurrence not found']
                                 }]
                             })
                         }
@@ -33,7 +33,7 @@ export class OcorrenciaController {
                     .catch( (error) => {
                         reject({
                             status: 500, 
-                            errors: "Erro de servidor interno" 
+                            errors: "Internal Server Error" 
                         })
                     })
             }  
@@ -52,7 +52,7 @@ export class OcorrenciaController {
                             .catch( error => {
                                 reject({ 
                                     status: 500,
-                                    errors: "Erro de servidor interno" 
+                                    errors: "Internal Server Error" 
                                 })
                             })
                     }
@@ -61,7 +61,7 @@ export class OcorrenciaController {
                         status: 404,
                         errors: [{ 
                             field: ['user'],
-                            messages: ['Usuário não encontrado em nosso sistema. Confira o ID enviado!']
+                            messages: ['User not found. Check the ID!']
                         }]
                     })
                 })
@@ -77,7 +77,7 @@ export class OcorrenciaController {
                         status: 404,
                         errors: [{ 
                             field: ['id'],
-                            messages: ['Ocorrência não encontrada']
+                            messages: ['Occurrence not found']
                         }]
                     })
                 })
