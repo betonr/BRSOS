@@ -1,9 +1,9 @@
 export const environment = {
   name: process.env.NAME || 'API BRSOS',
-  pathBase: process.env.PATHBASE || '',
+  pathBase: process.env.PATHBASE || '/brsos/api',
   port: process.env.PORT || 3000,
   db: {
-    database: process.env.DB_NAME || 'api-dev',
+    database: process.env.DB_NAME || 'api-brsos-dev',
     user: process.env.DB_USER || 'user',
     password: process.env.DB_PASS || 'test',
     options: {

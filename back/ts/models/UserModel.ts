@@ -35,10 +35,6 @@ const UserSchema = new mongoose.Schema({
         data: Buffer, 
         contentType: String 
     },
-    cpf: {
-        type: Number,
-        unique: true
-    },
     registration: Date,
     lastupdate: Date,      
     level: {

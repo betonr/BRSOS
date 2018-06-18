@@ -8,11 +8,11 @@ import {
   ActivityIndicator,
   AsyncStorage,
   Picker,
-  Dimensions, 
-  Button
+  Dimensions
 } from 'react-native';
 
 const width = Dimensions.get('screen').width;
+import Ocorrencias from '../middlewares/Ocorrencias'
 export default class Cadastro extends Component {
 
   constructor(props) {
@@ -21,8 +21,10 @@ export default class Cadastro extends Component {
       spinnerAnimating: false,
       descricao: '',
       gravidade:'',
-      vitimas:''
+      vitimas:'',
+      coordinates: []
     }
+
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this.props.navigator.setStyle({
       navBarBackgroundColor: '#7188AD'
@@ -35,8 +37,7 @@ export default class Cadastro extends Component {
         }
       ]
     });
-  }
-  
+  }  
 
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
@@ -51,33 +52,55 @@ export default class Cadastro extends Component {
       }
     }
   }
-  async enviarLocalizacao(){
-    alert('locaização enviada')
-   
+
+  getLocation() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({ coordinates: [position.coords.longitude, position.coords.latitude] });
+      },
+      _ => alert('ATIVE SEU GPS / LOCALIZAÇÃO'),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    )
+  }
+
+  componentDidMount() {
+    this.getLocation()
   }
 
   async cadastrar() {
     try {
       this.setState({ spinnerAnimating: true })
-
       
       if( this.state.descricao!= '' || this.state.vitimas != '' || this.state.gravidade != ''){
-        console.warn(this.state.descricao)
-        console.warn(this.state.gravidade)
-        console.warn(this.state.vitimas)
+        let user = await AsyncStorage.getItem('user')
+
+        let ocorrencia = {
+          "description": this.state.descricao,
+	        "category": parseInt(this.state.gravidade),
+	        "coordinates": this.state.coordinates,
+	        "user": user,
+	        "victims": this.state.vitimas
+        }
+        let response = await Ocorrencias.register(ocorrencia);
+        
+        alert('Cadastro realizado com sucesso!')
+        this.props.navigator.push({
+          screen: 'Menu',
+          title: 'Home'
+        })
+
       }else{
         alert('preencha corretamente os campos')
       }   
-
       setTimeout(() => this.setState({ spinnerAnimating: false }), 1000)   
 
     }catch (error){
       setTimeout(() => this.setState({ spinnerAnimating: false }), 1000)
       alert(error.response.data.errors[0].messages)
+      this.getLocation()
     }
   }
  
-
   render() {
       return (
         <View style={styles.container}>
@@ -104,11 +127,11 @@ export default class Cadastro extends Component {
 
               <Picker
                 selectedValue={this.state.gravidade}
-                onValueChange={(itemValue, itemIndex) => this.setState(infos = {...this.state.infos, gravidade: itemValue })}>
+                onValueChange={(itemValue, _) => this.setState(infos = {...this.state.infos, gravidade: itemValue })}>
                 <Picker.Item label="<Selecione a Gravidade>" value="grave" />
-                <Picker.Item label="Grave" value="grave" />
-                <Picker.Item label="Médio" value="Médio" />
-                <Picker.Item label="Leve" value="leve" />
+                <Picker.Item label="Grave" value="3" />
+                <Picker.Item label="Médio" value="2" />
+                <Picker.Item label="Leve" value="1" />
             </Picker>
 
             <Text style={styles.divisoria}></Text>

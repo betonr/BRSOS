@@ -1,6 +1,7 @@
 import * as bcrypt from 'bcrypt-nodejs'
 
 import UserModel from './../models/UserModel'
+import { Z_VERSION_ERROR } from 'zlib';
 
 export class UserController {
 

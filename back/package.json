@@ -4,8 +4,9 @@
   "description": "API BRSOS",
   "main": "main.js",
   "scripts": {
+    "dev": "nodemon dist/main.js",
     "start": "node dist/main.js",
-    "build": "tsc",
+    "build": "tsc -w",
     "docs": "apidoc -i ts/routes/doc -o public/doc",
     "test": "NODE_ENV=test babel-node __test__/index.js --logHeapUsage"
   },

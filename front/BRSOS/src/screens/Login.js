@@ -4,7 +4,6 @@ import {
   Text,
   View,
   TouchableHighlight,
-  ActivityIndicator,
   AsyncStorage
 } from 'react-native';
 
@@ -48,7 +47,6 @@ export default class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      spinnerAnimating: false,
       infos: {
         email: '',
         password: ''
@@ -68,11 +66,10 @@ export default class Login extends Component {
       let infos = this.refs.login.getValue();
       
       if(infos != null && infos.email != '' && infos.password != ''){
-        this.setState({ spinnerAnimating: true })
         const response = await Authentication.login(infos)
 
         AsyncStorage.setItem('token', response.data.token)
-        AsyncStorage.setItem('user', response.data.me)
+        AsyncStorage.setItem('user', response.data.me._id)
 
         this.props.navigator.resetTo({
           screen: 'Menu',
@@ -80,13 +77,9 @@ export default class Login extends Component {
         })
       }   
 
-      this.setState({ spinnerAnimating: false })  
-
-    }catch (error){
-      this.setState({ spinnerAnimating: false })
-      
-      if(typeof error.response.data.errors[0] !== 'undefined'){
-        alert(error.response.data.errors[0].messages)
+    } catch (error){
+      if(typeof error.response.data.errors[0] !== 'undefined' || typeof error.response !== 'undefined'){
+        alert(error.response.data.errors[0].messages[0])
       }else {
         alert('Erro interno, entre em contato com os administradores!')
       }
@@ -109,8 +102,6 @@ export default class Login extends Component {
           type={loginStruct} value={this.state.infos} onChange={this.onChange.bind(this)}
           style={{ marginTop: 50, color: 'red' }} options={options} />
 
-        <ActivityIndicator size="large" color="#589836" animating={this.state.spinnerAnimating} />
-        
         <TouchableHighlight style={styles.button} onPress={this.login.bind(this)} underlayColor='#6F9E38'>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableHighlight>

@@ -10,8 +10,8 @@ export default (app, environment): void => {
     app.post(environment.pathBase+"/auth/login",
         validate(policiesAuth.login), 
         (req, res) => Auth.login(req.body)
-            .then(response => res.status(202).send(response) )
-            .catch( error => res.status(error.status).send({error: error.errors}) )
+            .then(response => res.status(202).json(response) )
+            .catch( error => res.status(error.status).json({errors: error.errors}) )
     )
 
 }
