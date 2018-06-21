@@ -4,12 +4,14 @@ import { AsyncStorage } from 'react-native';
 import Login from './screens/Login';
 import Menu from './screens/Menu';
 import Cadastro from './screens/Cadastro';
+import Maps from './screens/Map';
 
 export default () => {
 
   Navigation.registerComponent('Login', () => Login);
   Navigation.registerComponent('Menu', () => Menu);
   Navigation.registerComponent('Cadastro', () => Cadastro);
+  Navigation.registerComponent('Map', () => Maps);
 
   AsyncStorage.getItem('token')
     .then(token => {

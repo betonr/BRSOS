@@ -58,7 +58,7 @@ export default class Cadastro extends Component {
       (position) => {
         this.setState({ coordinates: [position.coords.longitude, position.coords.latitude] });
       },
-      _ => alert('ATIVE SEU GPS / LOCALIZAÇÃO'),
+      _ => alert('NÃO ESTAMOS CONSEGUINDO PEGAR SUA LOCALIZAÇÃO. ATIVE SEU GPS / LOCALIZAÇÃO'),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     )
   }
@@ -73,6 +73,7 @@ export default class Cadastro extends Component {
       
       if( this.state.descricao!= '' || this.state.vitimas != '' || this.state.gravidade != ''){
         let user = await AsyncStorage.getItem('user')
+        let token = await AsyncStorage.getItem('token')
 
         let ocorrencia = {
           "description": this.state.descricao,
@@ -81,7 +82,7 @@ export default class Cadastro extends Component {
 	        "user": user,
 	        "victims": this.state.vitimas
         }
-        let response = await Ocorrencias.register(ocorrencia);
+        let response = await Ocorrencias.register(ocorrencia, token);
         
         alert('Cadastro realizado com sucesso!')
         this.props.navigator.push({
@@ -182,17 +183,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     alignSelf: 'stretch',
     justifyContent: 'center'
-  },
-  Buttonloc: {
-    height: 10,
-    width: width * 0.7,
-    backgroundColor: '#589836',
-    borderColor: '#5B8E00',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginTop: 5,
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   form:{
     width: width * 0.9

@@ -1,10 +1,24 @@
 import Api from './Api'
 
 export default {
-  get () {
-    return Api().get('/ocorrencias')
+  get (token) {
+    return Api().get('/ocorrencias', 
+    { 
+      headers: { 
+        'Authorization': `${token}`,
+      } 
+    })
   },
-  register (credentials) {
-    return Api().post('/ocorrencia/register', credentials)
+
+  register (credentials, token) {
+    return Api().post('/ocorrencia/register', credentials, { 
+      headers: { 
+        'Authorization': `${token}`,
+      } 
+    })
+  },
+
+  delete (id) {
+    return Api().delete('/ocorrencia/delete/'+id)
   }
 }

@@ -34,7 +34,9 @@ export default class Menu extends Component {
   
   async componentDidMount() {
     try {
-      let response = await Ocorrencias.get();
+      let token = await AsyncStorage.getItem('token')
+
+      let response = await Ocorrencias.get(token);
       this.setState({ocorrencias: response.data.ocorrencias.reverse()})
       
     } catch (error) {
@@ -42,15 +44,17 @@ export default class Menu extends Component {
     }
   }
 
-  async componentDidUpdate() {
-    try {
-      let response = await Ocorrencias.get();
-      this.setState({ocorrencias: response.data.ocorrencias.reverse()})
+  // async componentDidUpdate() {
+  //   try {
+  //     let token = await AsyncStorage.getItem('token')
+
+  //     let response = await Ocorrencias.get(token);
+  //     this.setState({ocorrencias: response.data.ocorrencias.reverse()})
       
-    } catch (error) {
-      console.warn(error)
-    }
-  }
+  //   } catch (error) {
+  //     console.warn(error)
+  //   }
+  // }
 
   getCat(category){
     switch(category) {
@@ -85,16 +89,34 @@ export default class Menu extends Component {
   getCadastro() {
     this.props.navigator.push({
       screen: 'Cadastro',
-      title: 'Cadastre ocorrências'
+      title: 'Cadastre Ocorrências'
     })
   }
 
-  render() {
+  getMap() {
+    this.props.navigator.push({
+      screen: 'Map',
+      title: 'Visualize a localização'
+    })
+  }
 
+  async deleteOcorrencia(id) {
+    let response = await Ocorrencias.delete(id)
+    let newOcorrencias = this.state.ocorrencias.filter(ocorrencia => ocorrencia._id != id)
+    this.setState({ ocorrencias: newOcorrencias })
+    alert('Ocorrência excluída')
+  }
+
+  async isCreator(item) {
+    let user = await AsyncStorage.getItem('user')
+    return user == item.user    
+  }
+
+  render() {
     return (
       <View style={ styles.container }>
         
-        <TouchableHighlight >
+        <TouchableHighlight>
           <Icon.Button style={styles.button} name="add" size={40} backgroundColor="#0B1D3B" onPress={ () => this.getCadastro() }>
             <Text style={styles.textButton}> CADASTRE OCORRÊNCIAS </Text>
           </Icon.Button>
@@ -106,10 +128,25 @@ export default class Menu extends Component {
           data={this.state.ocorrencias}
           renderItem={ ({item}) => 
             <View style={styles.boxOcorrencia}>
-              <Text>{item.description.toUpperCase()}</Text>
-              <Text>Data: {this.getDate(item.date)}</Text>
-              <Text>Nível: {this.getCat(item.category)}</Text>
-              <Text>Número de Vítimas: {item.victims == null ? 'Não informado' : item.victims}</Text>
+              <View style={styles.viewTexts}>
+                <Text style={{fontWeight: 'bold'}}>{item.description.toUpperCase()}</Text>
+                <Text>Data: {this.getDate(item.date)}</Text>
+                <Text>Nível: {this.getCat(item.category)}</Text>
+                <Text>Número de Vítimas: {item.victims == null ? 'Não informado' : item.victims}</Text>
+              </View>
+
+              <View style={styles.viewButtons}>
+                <TouchableHighlight>
+                  <Icon.Button name="search" size={20} backgroundColor="gray" onPress={ () => this.getMap() } />
+                </TouchableHighlight>
+
+                { this.isCreator(item) ? 
+                  <TouchableHighlight>
+                    <Icon.Button name="delete" size={20} backgroundColor="red" onPress={ () => this.deleteOcorrencia(item._id) } />
+                  </TouchableHighlight> : 
+                  <Text /> 
+                }       
+              </View>
             </View>
           }
         />
@@ -140,11 +177,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   boxOcorrencia: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     backgroundColor: '#EEE',
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 40,
     paddingRight: 40,
     marginBottom: 10,
+  },
+  viewButtons: {
+    width: 43,
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+
+  viewTexts: {
+    width: 220
   }
 });

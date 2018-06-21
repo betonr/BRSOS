@@ -79,7 +79,7 @@ export default class Login extends Component {
 
     } catch (error){
       if(typeof error.response.data.errors[0] !== 'undefined' || typeof error.response !== 'undefined'){
-        alert(error.response.data.errors[0].messages[0])
+        alert(error.response.data.errors[0].messages)
       }else {
         alert('Erro interno, entre em contato com os administradores!')
       }
