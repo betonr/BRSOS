@@ -53,4 +53,4 @@ Imagens das telas em tamanhos maiores podem ser encontradas em `/public`
  ```
 
 ### INSTALAÇÃO DAS .apks
- ... em breve
+ * [BRSOS apk](https://github.com/betonr/BRSOS/tree/master/front/BRSOS/apk)
