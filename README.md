@@ -21,7 +21,7 @@ Imagens das telas em tamanhos maiores podem ser encontradas em `/public`
 
 * Tela Acidente:
 
-![tela_listagem](https://github.com/betonr/BRSOS/blob/master/tela_listagem.png)
+![tela_listagem](https://github.com/betonr/BRSOS/blob/master/tela_listagem.jpeg)
   
 ## Trabalho da disciplina de programação para dispositivos móvies
 
